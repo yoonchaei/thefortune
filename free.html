@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fortune - 홈</title>
+    <title>사주 잡담 - The Fortune</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-category="free">
+
     <!-- Header -->
     <header>
         <div class="container">
             <a href="index.html" class="logo">The Fortune</a>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="nav-link active">소개</a></li>
+                    <li><a href="index.html" class="nav-link">소개</a></li>
                     <li><a href="information.html" class="nav-link">사주 정보</a></li>
-                    <li><a href="free.html" class="nav-link">사주 잡담</a></li>
+                    <li><a href="free.html" class="nav-link active">사주 잡담</a></li>
                     <li><a href="qna.html" class="nav-link">질문과 답</a></li>
                 </ul>
             </nav>
@@ -27,10 +28,13 @@
     <main class="container">
         <section class="content-section">
             <div class="section-header">
-                <h2>The Fortune에 오신 것을 환영합니다</h2>
+                <h2>사주 잡담</h2>
+                <p>사주와 관련된 어떤 이야기든 자유롭게 나눠보세요.</p>
             </div>
-            <p>이곳은 사주와 운세에 대한 지식과 이야기를 자유롭게 나누는 커뮤니티입니다.</p>
-            <p>상단의 메뉴를 클릭하여 다양한 주제의 게시판을 둘러보세요.</p>
+            <!-- 게시글 목록이 이곳에 동적으로 렌더링됩니다. -->
+            <div class="posts-list">
+                <p>주제를 불러오는 중입니다...</p>
+            </div>
         </section>
     </main>
 
@@ -38,10 +42,17 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 The Fortune. All rights reserved.</p>
-            <p>본 사이트는 사용자의 어떠한 개인정보도 수집하거나 저장하지 않습니다.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script defer src="main.js"></script>
+    <script defer src="/__/firebase/12.7.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/12.7.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+    
+    <!-- 댓글 기능 전용 스크립트를 연결합니다. -->
+    <script defer src="board-comment.js"></script>
+
 </body>
 </html>

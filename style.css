@@ -1,1 +1,375 @@
-/* Add styles here */
+/* ---
+   The Fortune - Refined Design
+   Vibe: Warm, Elegant, and Clean
+--- */
+
+/* --- 1. FONTS & ROOT VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap');
+
+:root {
+    /* Fonts */
+    --font-heading: 'Song Myung', serif;
+    --font-body: 'Gowun Dodum', sans-serif;
+
+    /* Colors */
+    --color-bg: #fdfaf8; /* Soft Cream */
+    --color-surface: #ffffff;
+    --color-primary: #b0899a; /* Dusty Rose */
+    --color-accent: #e1c699; /* Soft Gold */
+    --color-text: #3d3539; /* Dark, warm grey */
+    --color-text-light: #8a8184;
+    --color-border: #f0e9e7;
+
+    /* Effects */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
+/* --- 2. BASE & LAYOUT --- */
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main {
+    padding-top: 2rem;
+}
+
+/* --- 3. HEADER & NAVIGATION (Keeping original structure) --- */
+header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-soft);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: normal;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-left: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--color-primary);
+}
+
+
+/* --- 4. CONTENT SECTION --- */
+.content-section {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.section-header {
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-text);
+    margin: 0;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+/* --- 5. POSTS LIST --- */
+.posts-list .post {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.posts-list .post:last-child {
+    border-bottom: none;
+}
+
+.posts-list .post h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.posts-list .post p {
+    color: var(--color-text);
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.posts-list .post-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* --- 6. BUTTONS & FOOTER --- */
+button {
+    font-family: var(--font-body);
+    font-weight: bold;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    color: var(--color-text);
+    transition: var(--transition);
+}
+
+.board-footer {
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.write-post-btn {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+.write-post-btn:hover {
+    background-color: #a27b8e; /* Darker shade */
+}
+
+button[type="submit"] {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+button[type="submit"]:hover {
+    background-color: #d4b98c;
+}
+
+button.danger {
+    color: var(--color-primary);
+    border-color: #f0e9e7;
+}
+button.danger:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* --- 7. MODALS --- */
+.modal {
+    display: none;
+    position: fixed; z-index: 1001;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(61, 53, 57, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--color-surface);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-btn:hover, .close-btn:focus {
+    color: var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form h2 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box; /* Important */
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+
+/* --- 8. FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+/* --- 9. COMMENTS & REPLIES --- */
+.comments-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.comments-section h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.icon-comment { /* 가상 아이콘 */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-primary);
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>') no-repeat center;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>') no-repeat center;
+    margin-right: 0.5rem;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment {
+    background-color: #fdfaf8;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f0e9e7;
+}
+
+.comment-text {
+    margin: 0 0 0.75rem 0;
+    color: var(--color-text);
+}
+
+.comment-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.comment-actions button:hover {
+    color: var(--color-primary);
+}
+
+.comment-form, .reply-form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comment-form textarea, .reply-form textarea {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    min-height: 60px;
+}
+
+.comment-form button, .reply-form button {
+    align-self: flex-end;
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+}
+.comment-form button:hover, .reply-form button:hover {
+    background-color: #d4b98c;
+}
+
+.p.no-comments {
+    color: var(--color-text-light);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.replies-list {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reply {
+    background-color: #fff;
+    padding: 0.8rem;
+    border-radius: 4px;
+}
+.reply-text {
+    margin: 0;
+    font-size: 0.9rem;
+}
