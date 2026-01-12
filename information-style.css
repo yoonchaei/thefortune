@@ -1,0 +1,96 @@
+/* Information Page Specific Styles (v2) */
+
+/* This stylesheet handles the unique layout and font styles for the 'information' page,
+   preventing conflicts with other pages like 'free' or 'qna'. */
+
+/* --- FONTS --- */
+.section-header h2, .filter-btn, .modal-content h2, .post-item h3 {
+    font-family: 'Song Myung', serif;
+}
+.post-item h3 { font-size: 1.5rem; color: var(--color-primary); margin-top: 0; }
+
+
+/* --- BOARD LAYOUT & FILTERS --- */
+.category-filters { margin-bottom: 2rem; text-align: center; }
+.filter-btn {
+    font-weight: bold; background: none; border: 1px solid var(--color-border);
+    border-radius: 20px; padding: 0.5rem 1.2rem; margin: 0 0.3rem;
+    cursor: pointer; transition: var(--transition);
+}
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--color-primary); color: white; border-color: var(--color-primary);
+}
+
+/* --- POST LIST --- */
+.posts-list { min-height: 200px; } /* 데이터 없을 때를 위해 최소 높이 확보 */
+.post-item { background-color: var(--color-surface); padding: 1.5rem; border-bottom: 1px solid var(--color-border); transition: background-color 0.2s ease; }
+.post-item:last-child { border-bottom: none; }
+.post-item:hover { background-color: #f9f9f9; }
+.post-item p { color: var(--color-text); margin: 0.5rem 0; }
+.post-subcategory { font-size: 0.85rem; color: var(--color-accent); font-weight: bold; }
+
+/* --- PAGINATION --- */
+.pagination-controls { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 2rem; padding: 1rem 0; }
+.pagination-controls button { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; padding: 0.5rem 1rem; font-weight: bold; color: var(--color-primary); cursor: pointer; transition: var(--transition); }
+.pagination-controls button:hover:not([disabled]) { background-color: #e8f0ee; border-color: var(--color-primary); }
+.pagination-controls button:disabled { cursor: not-allowed; opacity: 0.5; }
+.pagination-controls .page-info { font-weight: bold; padding: 0 0.5rem; }
+
+/* --- FOOTER & WRITE BUTTON --- */
+.board-footer { text-align: right; margin-top: 1.5rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+#write-btn { background-color: var(--color-primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; transition: var(--transition); }
+#write-btn:hover { opacity: 0.9; }
+
+/* --- [NEW] WRITE MODAL STYLES --- */
+/* 글쓰기 모달의 크기와 레이아웃을 전용으로 제어합니다. */
+.modal-content.write-modal {
+    max-width: 800px; /* 창의 최대 너비를 800px로 크게 늘림 */
+    width: 90%;       /* 화면 너비의 90%를 사용 */
+    text-align: left; /* 내부 정렬을 왼쪽으로 변경 */
+}
+
+.write-modal h2 {
+    text-align: center; /* 제목만 중앙 정렬 유지 */
+    margin-bottom: 1.5rem;
+}
+
+.write-modal select,
+.write-modal input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.write-modal textarea {
+    width: 100%;
+    min-height: 400px; /* 내용을 입력하는 영역을 매우 길게 늘림 */
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.write-modal #save-post-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.write-modal #save-post-btn:hover {
+    opacity: 0.9;
+}

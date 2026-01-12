@@ -1,47 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fortune - 홈</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>The Fortune - 당신의 운세를 발견하세요</title>
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
-    <!-- Header -->
+
     <header>
-        <div class="container">
-            <a href="index.html" class="logo">The Fortune</a>
+        <h1><a href="index.html">The Fortune</a></h1>
+        <div class="header-right-panel">
             <nav>
                 <ul>
-                    <li><a href="index.html" class="nav-link active">소개</a></li>
-                    <li><a href="information.html" class="nav-link">사주 정보</a></li>
-                    <li><a href="free.html" class="nav-link">사주 잡담</a></li>
-                    <li><a href="qna.html" class="nav-link">질문과 답</a></li>
+                    <li><a href="index.html">소개</a></li>
+                    <li><a href="information.html">사주 정보</a></li>
+                    <li><a href="free.html">사주 잡담</a></li>
+                    <li><a href="qna.html">질문과 답</a></li>
                 </ul>
             </nav>
+            <!-- Theme toggle button will be injected here by JS -->
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
-        <section class="content-section">
-            <div class="section-header">
-                <h2>The Fortune에 오신 것을 환영합니다</h2>
+        <section class="hero">
+            <h2>당신의 삶, 그리고 우주의 조화</h2>
+            <p>The Fortune은 전통적인 사주 명리학을 현대적으로 해석하여, 당신의 삶에 대한 깊이 있는 통찰력을 제공합니다. 우주의 기운이 당신의 삶에 어떻게 영향을 미치는지 탐험해보세요.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-item">
+                <h3>사주 정보</h3>
+                <p>기초부터 심화까지, 사주 명리학의 모든 것을 알아보세요. 십이운성, 신살 등 전문적인 정보를 제공합니다.</p>
+                <a href="information.html">자세히 보기 &rarr;</a>
             </div>
-            <p>이곳은 사주와 운세에 대한 지식과 이야기를 자유롭게 나누는 커뮤니티입니다.</p>
-            <p>상단의 메뉴를 클릭하여 다양한 주제의 게시판을 둘러보세요.</p>
+            <div class="feature-item">
+                <h3>사주 잡담</h3>
+                <p>자유롭게 사주에 대한 이야기를 나누는 공간입니다. 당신의 사주 경험을 공유하고 다른 사람들의 이야기도 들어보세요.</p>
+                <a href="free.html">참여하기 &rarr;</a>
+            </div>
+            <div class="feature-item">
+                <h3>질문과 답</h3>
+                <p>사주에 대해 궁금한 점이 있나요? 무엇이든 질문하고 답변을 받아보세요. 전문가와 커뮤니티가 함께합니다.</p>
+                <a href="qna.html">질문하기 &rarr;</a>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 The Fortune. All rights reserved.</p>
-            <p>본 사이트는 사용자의 어떠한 개인정보도 수집하거나 저장하지 않습니다.</p>
-        </div>
+        <p>&copy; 2026 The Fortune. All rights reserved.</p>
+        <p class="privacy-policy">본 사이트는 제3자(예: Google)가 서비스 제공 및 광고 게재를 위해 쿠키를 사용할 수 있음을 안내합니다. 사용자는 브라우저 설정을 통해 쿠키 사용을 거부할 수 있습니다. 자세한 내용은 개인정보처리방침을 확인하시기 바랍니다.</p>
     </footer>
 
-    <script defer src="main.js"></script>
+    <!-- Firebase SDK from CDN (v9.6.10 compat) -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    
+    <!-- Local Scripts -->
+    <script defer src="firebase-config.js"></script>
+    <script defer src="theme-toggle.js"></script>
+
 </body>
 </html>

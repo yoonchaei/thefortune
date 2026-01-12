@@ -1,28 +1,40 @@
 /* ---
-   The Fortune - Refined Design
-   Vibe: Warm, Elegant, and Clean
+   The Fortune - Main Stylesheet (v4 - Layout & Dark Mode Fix)
 --- */
 
-/* --- 1. FONTS & ROOT VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap');
+/* --- 1. FONTS & THEME VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Song+Myung&family=Gowun+Dodum&display=swap');
 
+/* [THEME] Default Light Theme */
 :root {
-    /* Fonts */
+    --font-logo: 'Cinzel', serif;
     --font-heading: 'Song Myung', serif;
     --font-body: 'Gowun Dodum', sans-serif;
 
-    /* Colors */
-    --color-bg: #fdfaf8; /* Soft Cream */
+    /* Light Mode Colors */
+    --color-bg: #f0f5f3;
     --color-surface: #ffffff;
-    --color-primary: #b0899a; /* Dusty Rose */
-    --color-accent: #e1c699; /* Soft Gold */
-    --color-text: #3d3539; /* Dark, warm grey */
-    --color-text-light: #8a8184;
-    --color-border: #f0e9e7;
-
-    /* Effects */
-    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --color-primary: #6B8E85;
+    --color-accent: #b0899a;
+    --color-text: #4a4a4a;
+    --color-text-light: #888888;
+    --color-border: #e0e5e3;
+    --color-button-text: #ffffff;
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.07);
     --transition: all 0.3s ease;
+}
+
+/* [THEME] Dark Theme Variables */
+body[data-theme='dark'] {
+    --color-bg: #2c3e50;
+    --color-surface: #34495e;
+    --color-primary: #8dd4c5;
+    --color-accent: #f3a0bd;
+    --color-text: #ecf0f1;
+    --color-text-light: #bdc3c7;
+    --color-border: #4a627a;
+    --color-button-text: #2c3e50;
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* --- 2. BASE & LAYOUT --- */
@@ -32,344 +44,201 @@ body {
     color: var(--color-text);
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.container { width: 90%; max-width: 960px; margin: 2rem auto; }
+
+/* --- 2.5 GENERAL LINK & TEXT STYLES --- */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+a:hover {
+    color: var(--color-accent);
+}
+/* Fix for link visibility in Dark Mode */
+body[data-theme='dark'] a,
+body[data-theme='dark'] a:visited {
+    color: var(--color-primary); /* Use the light teal for all links */
+}
+body[data-theme='dark'] a:hover {
+    color: var(--color-accent); /* Use the light pink for hover */
 }
 
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-}
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary); }
 
-main {
-    padding-top: 2rem;
-}
 
-/* --- 3. HEADER & NAVIGATION (Keeping original structure) --- */
+/* --- 3. HEADER & NAVIGATION --- */
 header {
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-soft);
-}
-
-header .container {
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: normal;
-    color: var(--color-text);
-    text-decoration: none;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    margin-left: 2rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--color-text-light);
-    font-weight: bold;
-    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     transition: var(--transition);
 }
+header h1 a { font-family: var(--font-logo); font-size: 2rem; color: var(--color-primary); text-decoration: none; }
 
-nav a:hover,
-nav a.active {
-    color: var(--color-primary);
-}
+.header-right-panel { display: flex; align-items: center; gap: 1.5rem; }
+nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+nav li { margin-left: 2rem; }
+nav a { text-decoration: none; color: var(--color-text-light); font-weight: bold; transition: color 0.3s ease; }
+nav a:hover { color: var(--color-accent); }
 
-
-/* --- 4. CONTENT SECTION --- */
-.content-section {
-    background: var(--color-surface);
-    padding: 2rem;
-    border-radius: 8px;
+#theme-toggle-button {
+    background: transparent;
     border: 1px solid var(--color-border);
-}
-
-.section-header {
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.section-header h2 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    color: var(--color-text);
-    margin: 0;
-}
-
-p {
-    margin-bottom: 1rem;
-    color: var(--color-text);
-}
-
-/* --- 5. POSTS LIST --- */
-.posts-list .post {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.posts-list .post:last-child {
-    border-bottom: none;
-}
-
-.posts-list .post h3 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--color-primary);
-    margin: 0 0 0.5rem 0;
-}
-
-.posts-list .post p {
-    color: var(--color-text);
-    white-space: pre-wrap;
-    line-height: 1.7;
-}
-
-.posts-list .post-actions {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-/* --- 6. BUTTONS & FOOTER --- */
-button {
-    font-family: var(--font-body);
-    font-weight: bold;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: #fff;
-    color: var(--color-text);
-    transition: var(--transition);
-}
-
-.board-footer {
-    padding-top: 1.5rem;
-    margin-top: 1rem;
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    justify-content: flex-end;
-}
-
-.write-post-btn {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: white;
-}
-.write-post-btn:hover {
-    background-color: #a27b8e; /* Darker shade */
-}
-
-button[type="submit"] {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
-}
-button[type="submit"]:hover {
-    background-color: #d4b98c;
-}
-
-button.danger {
-    color: var(--color-primary);
-    border-color: #f0e9e7;
-}
-button.danger:hover {
-    background-color: var(--color-primary);
-    color: white;
-}
-
-/* --- 7. MODALS --- */
-.modal {
-    display: none;
-    position: fixed; z-index: 1001;
-    left: 0; top: 0; width: 100%; height: 100%;
-    background-color: rgba(61, 53, 57, 0.5);
-    backdrop-filter: blur(4px);
-}
-
-.modal-content {
-    background-color: var(--color-surface);
-    margin: 15% auto;
-    padding: 2rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close-btn:hover, .close-btn:focus {
-    color: var(--color-text);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-form h2 {
-    font-family: var(--font-heading);
-    margin-top: 0;
-}
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    box-sizing: border-box; /* Important */
-    font-family: var(--font-body);
-    font-size: 1rem;
-}
-
-input[type="text"]:focus, textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-}
-
-
-/* --- 8. FOOTER --- */
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
     color: var(--color-text-light);
-    font-size: 0.9rem;
-}
-
-/* --- 9. COMMENTS & REPLIES --- */
-.comments-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
-}
-
-.comments-section h4 {
-    font-family: var(--font-heading);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
     font-size: 1.2rem;
-    color: var(--color-text);
-    margin: 0 0 1.5rem 0;
+    line-height: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+#theme-toggle-button:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
-.icon-comment { /* 가상 아이콘 */
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: var(--color-primary);
-    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>') no-repeat center;
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>') no-repeat center;
-    margin-right: 0.5rem;
+/* --- 4. CONTENT SECTIONS & MAIN PAGE --- */
+
+/* Generic section for pages like 'free', 'qna', etc. */
+.content-section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+/* Main Page ('index.html') Specifics */
+.hero {
+    text-align: center;
+    padding: 2rem 0 3rem 0;
 }
-
-.comment {
-    background-color: #fdfaf8;
-    padding: 1rem;
-    border-radius: 6px;
-    border: 1px solid #f0e9e7;
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
 }
-
-.comment-text {
-    margin: 0 0 0.75rem 0;
-    color: var(--color-text);
-}
-
-.comment-actions {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-size: 0.8rem;
-}
-
-.comment-actions button {
-    background: none;
-    border: none;
+.hero p {
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto;
     color: var(--color-text-light);
-    cursor: pointer;
-    padding: 0;
-    font-size: 0.8rem;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+}
+
+.feature-item {
+    text-align: center;
+    max-width: 250px;
+    /* No background or border to remove the "box" effect */
+}
+.feature-item h3 {
+    font-size: 1.6rem;
+}
+.feature-item a {
+    display: inline-block;
+    margin-top: 1rem;
     font-weight: bold;
 }
-.comment-actions button:hover {
-    color: var(--color-primary);
-}
 
-.comment-form, .reply-form {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+/* --- 5. COMMENT BOARD STYLES ('free' & 'qna' pages) --- */
+.topic-header { padding-bottom: 1.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); text-align: center; }
+.topic-header h3 { font-size: 1.8rem; }
 
-.comment-form textarea, .reply-form textarea {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    min-height: 60px;
-}
+#comment-form { margin-top: 2rem; border-top: 1px solid var(--color-border); padding-top: 2rem; }
+#comment-form h4 { text-align: center; font-size: 1.6rem; margin-bottom: 1.5rem; }
 
-.comment-form button, .reply-form button {
-    align-self: flex-end;
-    background-color: var(--color-accent);
-    color: white;
-    border: none;
-    padding: 0.4rem 1rem;
-}
-.comment-form button:hover, .reply-form button:hover {
-    background-color: #d4b98c;
-}
-
-.p.no-comments {
-    color: var(--color-text-light);
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-.replies-list {
-    margin-top: 1rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.reply {
-    background-color: #fff;
+.comment-input-group { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.comment-input-group input, #comment-form textarea {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
     padding: 0.8rem;
-    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: var(--transition);
 }
-.reply-text {
-    margin: 0;
-    font-size: 0.9rem;
+#comment-form textarea { min-height: 100px; resize: vertical; margin-bottom: 1rem; }
+
+#comment-form button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-button-text);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+#comment-form button:hover { opacity: 0.9; }
+
+.comments-section .no-comments { color: var(--color-text-light); text-align: center; padding: 2rem 0; }
+.comment-item { padding: 1.5rem 0; border-bottom: 1px solid var(--color-border); }
+.comment-item:last-child { border-bottom: none; }
+.comment-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.comment-info strong { font-size: 1.05rem; }
+.comment-meta { font-size: 0.85rem; color: var(--color-text-light); }
+.comment-body { margin-bottom: 0.8rem; }
+.delete-comment-btn { 
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.delete-comment-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* --- 9. MODAL STYLES (Password & Write Form) --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: var(--color-surface); padding: 2.5rem; border-radius: 12px; width: 90%; max-width: 500px; text-align: center; border: 1px solid var(--color-border); }
+.modal-content h2, .modal-content h4 { font-family: var(--font-heading); color: var(--color-primary); }
+.modal-content .close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer; color: var(--color-text-light); }
+
+/* --- 10. FOOTER & RESPONSIVE --- */
+footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; color: var(--color-text-light); font-size: 0.9rem; line-height: 1.6; }
+.privacy-policy { font-size: 0.8rem; color: #a0a0a0; margin-top: 0.8rem; }
+body[data-theme='dark'] .privacy-policy { color: #7f8c8d; }
+
+@media (max-width: 768px) {
+    .container { width: 95%; }
+    header { flex-direction: column; padding-bottom: 1rem; }
+    .header-right-panel { margin-top: 1rem; }
+    nav ul { padding: 0; justify-content: center;}
+    nav li { margin: 0 0.8rem; }
+    .hero h2 { font-size: 2.2rem; }
+    .features { flex-direction: column; align-items: center; }
 }

@@ -1,58 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사주 잡담 - The Fortune</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body data-category="free">
 
-    <!-- Header -->
     <header>
-        <div class="container">
-            <a href="index.html" class="logo">The Fortune</a>
+        <h1><a href="index.html">The Fortune</a></h1>
+        <div class="header-right-panel">
             <nav>
                 <ul>
-                    <li><a href="index.html" class="nav-link">소개</a></li>
-                    <li><a href="information.html" class="nav-link">사주 정보</a></li>
-                    <li><a href="free.html" class="nav-link active">사주 잡담</a></li>
-                    <li><a href="qna.html" class="nav-link">질문과 답</a></li>
+                    <li><a href="index.html">소개</a></li>
+                    <li><a href="information.html">사주 정보</a></li>
+                    <li><a href="free.html">사주 잡담</a></li>
+                    <li><a href="qna.html">질문과 답</a></li>
                 </ul>
             </nav>
+            <!-- Theme toggle button will be injected here by JS -->
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
-        <section class="content-section">
-            <div class="section-header">
+        
+        <section class="page-intro">
+            <div class="intro-text">
                 <h2>사주 잡담</h2>
-                <p>사주와 관련된 어떤 이야기든 자유롭게 나눠보세요.</p>
-            </div>
-            <!-- 게시글 목록이 이곳에 동적으로 렌더링됩니다. -->
-            <div class="posts-list">
-                <p>주제를 불러오는 중입니다...</p>
+                <p>사주에 대한 당신의 경험, 생각, 느낌을 자유롭게 나눠주세요. 꼭 전문적인 지식이 아니어도 좋습니다. 일상 속에서 느낀 소소한 이야기나 재미있는 해석 등 어떤 이야기든 환영합니다.</p>
             </div>
         </section>
+
+        <section class="content-section" id="board-container">
+            <p>게시판을 불러오는 중입니다...</p>
+        </section>
+
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 The Fortune. All rights reserved.</p>
-        </div>
+        <p>&copy; 2026 The Fortune. All rights reserved.</p>
+        <p class="privacy-policy">본 사이트는 제3자(예: Google)가 서비스 제공 및 광고 게재를 위해 쿠키를 사용할 수 있음을 안내합니다. 사용자는 브라우저 설정을 통해 쿠키 사용을 거부할 수 있습니다. 자세한 내용은 개인정보처리방침을 확인하시기 바랍니다.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script defer src="main.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
-    
-    <!-- 댓글 기능 전용 스크립트를 연결합니다. -->
+    <!-- Firebase SDK & Config -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script defer src="firebase-config.js"></script>
+
+    <!-- Page-specific & Global Scripts -->
     <script defer src="board-comment.js"></script>
+    <script defer src="theme-toggle.js"></script>
 
 </body>
 </html>
