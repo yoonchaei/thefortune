@@ -8,7 +8,7 @@
 /* [THEME] Default Light Theme */
 :root {
     --font-logo: 'Cinzel', serif;
-    --font-heading: 'Song+Myung', serif;
+    --font-heading: 'Song Myung', serif;
     --font-body: 'Gowun Dodum', sans-serif;
 
     /* Light Mode Colors */
@@ -226,6 +226,90 @@ nav a:hover { color: var(--color-accent); }
 .comment-actions button:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
+}
+
+/* --- 5.5. REPLY & EDIT STYLES --- */
+.replies-container {
+    padding-left: 2rem;
+    margin-left: 1rem;
+    border-left: 2px solid var(--color-border);
+}
+
+.replies-container .comment-item {
+    padding-left: 1.5rem;
+}
+
+.reply-form, .edit-form {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.reply-form h4 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.reply-form .comment-input-group {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.reply-form input, .reply-form textarea, .edit-form textarea {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.6rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+.reply-form textarea, .edit-form textarea {
+    min-height: 70px;
+    margin-bottom: 0.5rem;
+}
+
+.reply-form-actions, .edit-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.reply-form-actions button, .edit-form-actions button {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.reply-form-actions button[type="submit"], .edit-form-actions .save-comment-btn {
+    background-color: var(--color-primary);
+    color: var(--color-button-text);
+}
+
+.reply-form-actions button[type="button"], .edit-form-actions .cancel-edit-btn {
+    background-color: var(--color-surface);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+}
+
+.reply-form-actions button[type="submit"]:hover, .edit-form-actions .save-comment-btn:hover {
+    opacity: 0.9;
+}
+
+.reply-form-actions button[type="button"]:hover, .edit-form-actions .cancel-edit-btn:hover {
+    background-color: var(--color-bg);
+    border-color: var(--color-text-light);
 }
 
 .post-item:hover {
