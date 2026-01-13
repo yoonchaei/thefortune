@@ -13,12 +13,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const SUB_CATEGORIES = ['십이운성', '신살', '격국', '기타'];
     let currentSubCategory = '전체';
     
-    // --- 페이지네이션 상태 변수 ---
     let allPosts = [];
     let currentPage = 1;
     const postsPerPage = 15;
 
-    // 1. 페이지의 전체적인 구조를 렌더링하는 함수
     const renderPageLayout = async () => {
         const boardIntro = "이곳은 사주 명리에 대한 깊이 있는 지식과 정보를 나누는 공간입니다. 십이운성, 신살, 격국 등 전문적인 개념부터 실전 통변에 유용한 팁까지, The Fortune의 운영자가 직접 작성한 글들을 만나보실 수 있습니다.";
         mainContainer.innerHTML = `
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         await fetchAndRenderPosts();
     };
 
-    // 2. Firestore에서 데이터를 가져와서 렌더링하는 함수 (수정됨)
     const fetchAndRenderPosts = async () => {
         const listContainer = document.getElementById('posts-list-container');
         const paginationContainer = document.getElementById('pagination-controls-container');
@@ -55,22 +52,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 query = query.where('subCategory', '==', currentSubCategory);
             }
             
-            // [수정] Firestore 쿼리에서 orderBy 제거 (인덱스 문제 우회)
             const snapshot = await query.get();
             
             allPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-            // [추가] 클라이언트(JavaScript)에서 직접 정렬 실행
+            // 클라이언트 사이드에서 정렬을 수행합니다.
             allPosts.sort((a, b) => {
                 const dateA = a.createdAt?.toDate() || new Date(0);
                 const dateB = b.createdAt?.toDate() || new Date(0);
-                return dateB - dateA; // 최신순 (내림차순)
+                return dateB - dateA; // 최신순으로 정렬
             });
             
             currentPage = 1; 
 
             if (snapshot.empty) {
-                const message = currentSubCategory === '전체' ? "아직 새로운 글이 없습니다." : `\'${currentSubCategory}\' 카테고리에 아직 새로운 글이 없습니다.`;
+                const message = currentSubCategory === '전체' ? "아직 새로운 글이 없습니다." : `'${currentSubCategory}' 카테고리에 아직 새로운 글이 없습니다.`;
                 listContainer.innerHTML = `<p>${message}</p>`;
             } else {
                 renderPostsForCurrentPage();
@@ -82,7 +78,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // 3. 현재 페이지에 해당하는 글 목록을 화면에 그리는 함수
     const renderPostsForCurrentPage = () => {
         const listContainer = document.getElementById('posts-list-container');
         const startIndex = (currentPage - 1) * postsPerPage;
@@ -90,22 +85,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         const postsToRender = allPosts.slice(startIndex, endIndex);
 
         let postsHtml = postsToRender.map(post => {
-            const contentSnippet = post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content;
             return `
                 <div class="post-item" data-id="${post.id}">
                     <h3>${post.title}</h3>
-                    <p>${contentSnippet.replace(/\n/g, '<br>')}</p>
-                    <span class="post-subcategory">${post.subCategory || '기타'}</span>
                 </div>
             `;
         }).join('');
         listContainer.innerHTML = postsHtml;
+
+        // 각 포스트 아이템에 클릭 이벤트 추가
         document.querySelectorAll('.post-item').forEach(item => {
-            item.addEventListener('click', () => alert('상세 페이지는 현재 준비 중입니다.'));
+            item.addEventListener('click', () => {
+                const postId = item.dataset.id;
+                window.location.href = `post-detail.html?id=${postId}`;
+            });
         });
     };
 
-    // 4. 페이지네이션 컨트롤 버튼들을 렌더링하는 함수
     const renderPaginationControls = () => {
         const paginationContainer = document.getElementById('pagination-controls-container');
         const totalPages = Math.ceil(allPosts.length / postsPerPage);
@@ -123,7 +119,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         paginationContainer.innerHTML = paginationHtml;
 
         paginationContainer.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // 이벤트 버블링 방지
                 currentPage = parseInt(button.dataset.page);
                 renderPostsForCurrentPage();
                 renderPaginationControls();
@@ -131,9 +128,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
 
-    // 5. 각종 이벤트 리스너를 한 곳에서 관리
     const attachEventListeners = () => {
-        document.getElementById('write-btn').addEventListener('click', showPasswordModal);
+        document.getElementById('write-btn').addEventListener('click', () => showPasswordModal(null, 'write'));
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 currentSubCategory = e.target.dataset.filter;
@@ -144,19 +140,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
 
-    // (비밀번호 및 글쓰기 모달 함수는 변경 없음)
-    const showPasswordModal = () => {
+    const showPasswordModal = (postId, action) => {
         const modalId = 'password-modal-overlay';
         const existingModal = document.getElementById(modalId);
         if (existingModal) existingModal.remove();
+        
+        let title = '관리자 인증';
+        if(action === 'write') title = '새 글 작성';
+
         const modalHtml = `
             <div class="modal-overlay" id="${modalId}">
                 <div class="modal-content password-modal">
                     <span class="close-btn">&times;</span>
-                    <h2>관리자 인증</h2>
-                    <p>글을 작성하려면 비밀번호를 입력하세요.</p>
+                    <h2>${title}</h2>
+                    <p>계속하려면 비밀번호를 입력하세요.</p>
                     <input type="password" id="admin-password-input" placeholder="비밀번호">
-                    <button id="admin-login-btn">확인</button>
+                    <button id="admin-confirm-btn">확인</button>
                     <p class="error-message" style="display:none;">비밀번호가 올바르지 않습니다.</p>
                 </div>
             </div>
@@ -167,18 +166,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         const passwordInput = document.getElementById('admin-password-input');
         passwordInput.focus();
 
-        const handleLogin = () => {
+        const handleConfirm = async () => {
             if (passwordInput.value === ADMIN_PASSWORD) {
                 modalOverlay.remove();
-                showWriteModal();
+                if (action === 'write') {
+                    showWriteModal();
+                } 
             } else {
                 modalOverlay.querySelector('.error-message').style.display = 'block';
             }
         };
 
-        modalOverlay.querySelector('#admin-login-btn').addEventListener('click', handleLogin);
+        modalOverlay.querySelector('#admin-confirm-btn').addEventListener('click', handleConfirm);
         passwordInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleLogin();
+            if (e.key === 'Enter') handleConfirm();
         });
         modalOverlay.querySelector('.close-btn').addEventListener('click', () => modalOverlay.remove());
     };
@@ -187,16 +188,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         const modalId = 'write-modal-overlay';
         const existingModal = document.getElementById(modalId);
         if (existingModal) existingModal.remove();
-        const subCategoryOptions = SUB_CATEGORIES.map(sub => `<option value="${sub}" ${post && post.subCategory === sub ? 'selected' : ''}>${sub}</option>`).join('');
+        const isEditing = post !== null;
+        const subCategoryOptions = SUB_CATEGORIES.map(sub => `<option value="${sub}" ${isEditing && post.subCategory === sub ? 'selected' : ''}>${sub}</option>`).join('');
         const modalHtml = `
             <div class="modal-overlay" id="${modalId}">
                 <div class="modal-content write-modal">
                     <span class="close-btn">&times;</span>
-                    <h2>${post ? '글 수정' : '새 글 작성'}</h2>
+                    <h2>${isEditing ? '글 수정' : '새 글 작성'}</h2>
                     <select id="post-sub-category">${subCategoryOptions}</select>
-                    <input type="text" id="post-title" placeholder="제목" value="${post ? post.title : ''}" required>
-                    <textarea id="post-content" placeholder="내용">${post ? post.content : ''}</textarea>
-                    <button id="save-post-btn">저장</button>
+                    <input type="text" id="post-title" placeholder="제목" value="${isEditing ? post.title : ''}" required>
+                    <textarea id="post-content" placeholder="내용">${isEditing ? post.content : ''}</textarea>
+                    <button id="save-post-btn">${isEditing ? '수정 완료' : '저장'}</button>
                 </div>
             </div>
         `;
@@ -213,20 +215,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
             try {
-                const postData = {
-                    title, content, category, subCategory,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                };
-                await db.collection('posts').add(postData);
+                if (isEditing) {
+                    await db.collection('posts').doc(post.id).update({
+                        title, content, subCategory,
+                    });
+                } else {
+                    await db.collection('posts').add({
+                        title, content, category, subCategory,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                }
                 modalOverlay.remove();
                 await fetchAndRenderPosts();
             } catch (error) {
-                console.error("글 저장 오류: ", error);
-                alert("글을 저장하는 데 실패했습니다.");
+                console.error("글 저장/수정 오류: ", error);
+                alert("작업을 완료하는 데 실패했습니다.");
             }
         });
     };
 
-    // --- 페이지 로딩 시작 ---
     await renderPageLayout();
 });

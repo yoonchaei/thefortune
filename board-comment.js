@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let topicDocRef;
             const topicQuery = await db.collection('posts').where('category', '==', category).limit(1).get();
 
-            // 1. [핵심] 주제 글이 있는지 확인합니다.
             if (topicQuery.empty) {
-                // 2. [핵심] 주제 글이 없다면, 자동으로 기본 주제를 생성합니다.
                 console.log(`No topic for '${category}'. Creating a default topic.`);
                 const defaultTopicData = {
                     title: category === 'free' ? '자유로운 이야기' : '무엇이든 물어보세요',
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 topicDocRef = await db.collection('posts').add(defaultTopicData);
             } else {
-                // 주제 글이 있다면 해당 글의 참조를 사용합니다.
                 topicDocRef = topicQuery.docs[0].ref;
             }
 
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const topicDoc = await topicDocRef.get();
             const topicData = topicDoc.data();
 
-            // 3. [핵심] 이제 주제가 반드시 존재하므로, 댓글 토론장 UI를 무조건 그립니다.
             boardContainer.innerHTML = `
                 <div class="topic-header">
                     <h3>${topicData.title}</h3>
@@ -55,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4>댓글 남기기</h4>
                         <div class="comment-input-group">
                             <input type="text" id="comment-author" placeholder="닉네임" required>
-                            <input type="password" id="comment-password" placeholder="비밀번호 (삭제 시 필요)" required>
+                            <input type="password" id="comment-password" placeholder="비밀번호 (수정/삭제 시 필요)" required>
                         </div>
                         <textarea id="comment-text" placeholder="주제에 대한 당신의 생각을 자유롭게 나눠주세요." required></textarea>
                         <button type="submit">댓글 등록</button>
@@ -66,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const commentsList = document.getElementById('comments-list');
             const commentForm = document.getElementById('comment-form');
 
-            // 4. 댓글 목록을 실시간으로 가져와 표시합니다.
             db.collection('posts').doc(topicId).collection('comments').orderBy('createdAt', 'asc')
                 .onSnapshot(snapshot => {
                     commentsList.innerHTML = '';
@@ -84,14 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="comment-meta">${new Date(comment.createdAt.seconds * 1000).toLocaleString()}</span>
                                 </div>
                                 <p class="comment-body">${comment.text.replace(/\n/g, '<br>')}</p>
-                                <button class="delete-comment-btn">삭제</button>
+                                <div class="comment-actions">
+                                    <button class="edit-comment-btn">수정</button>
+                                    <button class="delete-comment-btn">삭제</button>
+                                </div>
                             `;
                             commentsList.appendChild(commentEl);
                         });
                     }
                 });
 
-            // 5. 댓글 등록 이벤트를 처리합니다.
             commentForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const author = document.getElementById('comment-author').value.trim();
@@ -110,24 +107,88 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // 6. 댓글 삭제 이벤트를 처리합니다.
             commentsList.addEventListener('click', async (e) => {
-                if (!e.target.classList.contains('delete-comment-btn')) return;
                 const commentItem = e.target.closest('.comment-item');
+                if (!commentItem) return;
                 const commentId = commentItem.dataset.id;
-                const enteredPassword = prompt('댓글을 삭제하려면 비밀번호를 입력하세요.');
-                if (!enteredPassword) return;
-
                 const commentRef = db.collection('posts').doc(topicId).collection('comments').doc(commentId);
-                try {
-                    const doc = await commentRef.get();
-                    if (doc.exists && doc.data().password === enteredPassword) {
-                        await commentRef.delete();
-                    } else {
-                        alert('비밀번호가 일치하지 않거나 댓글이 존재하지 않습니다.');
+
+                // --- 수정 버튼 ---
+                if (e.target.classList.contains('edit-comment-btn')) {
+                    const enteredPassword = prompt('댓글을 수정하려면 비밀번호를 입력하세요.');
+                    if (!enteredPassword) return;
+
+                    try {
+                        const doc = await commentRef.get();
+                        if (doc.exists && doc.data().password === enteredPassword) {
+                            const commentBody = commentItem.querySelector('.comment-body');
+                            const currentText = doc.data().text;
+                            
+                            commentItem.classList.add('editing');
+                            commentBody.innerHTML = `<textarea class="edit-textarea">${currentText}</textarea>`;
+                            
+                            const actions = commentItem.querySelector('.comment-actions');
+                            actions.innerHTML = `
+                                <button class="save-comment-btn">저장</button>
+                                <button class="cancel-edit-btn">취소</button>
+                            `;
+
+                        } else {
+                            alert('비밀번호가 일치하지 않거나 댓글이 존재하지 않습니다.');
+                        }
+                    } catch (error) {
+                        alert('오류: 댓글 정보를 가져오지 못했습니다.');
                     }
-                } catch (error) {
-                    alert('오류: 댓글을 삭제하지 못했습니다.');
+                }
+
+                // --- 저장 버튼 ---
+                if (e.target.classList.contains('save-comment-btn')) {
+                    const newText = commentItem.querySelector('.edit-textarea').value.trim();
+                    if (!newText) {
+                        alert('내용을 입력해주세요.');
+                        return;
+                    }
+                    try {
+                        await commentRef.update({ text: newText });
+                        // onSnapshot이 자동으로 화면을 갱신하므로 별도 처리 필요 없음
+                    } catch (error) {
+                        alert('오류: 댓글을 수정하지 못했습니다.');
+                    }
+                }
+
+                // --- 수정 취소 버튼 ---
+                if (e.target.classList.contains('cancel-edit-btn')) {
+                    // onSnapshot 리스너가 있기 때문에, 특별히 아무것도 하지 않아도
+                    // Firestore 데이터가 변경되지 않았으므로 다음번 자동 새로고침 때 원래대로 돌아오거나
+                    // 수동으로 UI를 복원할 수 있습니다. 가장 간단한 방법은 UI를 직접 복원하는 것입니다.
+                     const doc = await commentRef.get();
+                     if(doc.exists) {
+                         const commentBody = commentItem.querySelector('.comment-body');
+                         commentBody.innerHTML = `<p class="comment-body">${doc.data().text.replace(/\n/g, '<br>')}</p>`;
+                         const actions = commentItem.querySelector('.comment-actions');
+                         actions.innerHTML = `
+                            <button class="edit-comment-btn">수정</button>
+                            <button class="delete-comment-btn">삭제</button>
+                         `;
+                         commentItem.classList.remove('editing');
+                     }
+                }
+
+                // --- 삭제 버튼 ---
+                if (e.target.classList.contains('delete-comment-btn')) {
+                    const enteredPassword = prompt('댓글을 삭제하려면 비밀번호를 입력하세요.');
+                    if (!enteredPassword) return;
+
+                    try {
+                        const doc = await commentRef.get();
+                        if (doc.exists && doc.data().password === enteredPassword) {
+                            await commentRef.delete();
+                        } else {
+                            alert('비밀번호가 일치하지 않거나 댓글이 존재하지 않습니다.');
+                        }
+                    } catch (error) {
+                        alert('오류: 댓글을 삭제하지 못했습니다.');
+                    }
                 }
             });
 

@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사주 정보 - The Fortune</title>
+    <title>게시글 상세 - The Fortune</title>
     <link rel="stylesheet" href="style.css?v=6">
-    <link rel="stylesheet" href="information-style.css?v=6">
+    <link rel="stylesheet" href="information-style.css?v=3">
 </head>
-<body data-category="information">
-
+<body>
     <header>
         <h1><a href="index.html">The Fortune</a></h1>
         <div class="header-right-panel">
@@ -25,8 +24,20 @@
         </div>
     </header>
 
-    <main class="container" id="board-container">
-        <p>게시판을 불러오는 중입니다...</p>
+    <main class="container">
+        <section class="content-section post-detail-container">
+            <div id="post-content-area">
+                <!-- Javascript로 내용이 채워집니다. -->
+                <p>게시글을 불러오는 중입니다...</p>
+            </div>
+            <div class="post-detail-footer">
+                <button id="back-to-list-btn">목록으로</button>
+                <div class="admin-actions">
+                    <button id="edit-post-btn">수정</button>
+                    <button id="delete-post-btn">삭제</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -34,14 +45,14 @@
         <p class="privacy-policy">본 사이트는 제3자(예: Google)가 서비스 제공 및 광고 게재를 위해 쿠키를 사용할 수 있음을 안내합니다. 사용자는 브라우저 설정을 통해 쿠키 사용을 거부할 수 있습니다. 자세한 내용은 개인정보처리방침을 확인하시기 바랍니다.</p>
     </footer>
 
-    <!-- Firebase SDK & Config -->
+    <!-- Firebase SDK (v9.6.10 compat) -->
     <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <script defer src="firebase-config.js?v=6"></script>
 
-    <!-- Page-specific & Global Scripts -->
-    <script defer src="board-list.js?v=6"></script>
+    <!-- Firebase Config & Scripts -->
+    <script defer src="firebase-config.js?v=6"></script>
     <script defer src="theme-toggle.js?v=6"></script>
+    <script defer src="post-detail.js?v=6"></script>
 
 </body>
 </html>

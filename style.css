@@ -8,7 +8,7 @@
 /* [THEME] Default Light Theme */
 :root {
     --font-logo: 'Cinzel', serif;
-    --font-heading: 'Song Myung', serif;
+    --font-heading: 'Song+Myung', serif;
     --font-body: 'Gowun Dodum', sans-serif;
 
     /* Light Mode Colors */
@@ -151,7 +151,6 @@ nav a:hover { color: var(--color-accent); }
 .feature-item {
     text-align: center;
     max-width: 250px;
-    /* No background or border to remove the "box" effect */
 }
 .feature-item h3 {
     font-size: 1.6rem;
@@ -207,7 +206,12 @@ nav a:hover { color: var(--color-accent); }
 .comment-info strong { font-size: 1.05rem; }
 .comment-meta { font-size: 0.85rem; color: var(--color-text-light); }
 .comment-body { margin-bottom: 0.8rem; }
-.delete-comment-btn { 
+
+.comment-actions {
+    text-align: right;
+}
+
+.comment-actions button {
     background: none;
     border: 1px solid var(--color-border);
     color: var(--color-text-light);
@@ -216,11 +220,19 @@ nav a:hover { color: var(--color-accent); }
     border-radius: 4px;
     cursor: pointer;
     transition: var(--transition);
+    margin-left: 0.5rem;
 }
-.delete-comment-btn:hover {
+
+.comment-actions button:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
 }
+
+.post-item:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
 
 /* --- 9. MODAL STYLES (Password & Write Form) --- */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
