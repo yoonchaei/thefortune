@@ -563,3 +563,167 @@
 [error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [debug] [2026-01-13T11:31:37.933Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
 [debug] [2026-01-13T11:31:37.934Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:41.779Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:41.784Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:41.786Z] Checked if tokens are valid: false, expires at: 1768385959867
+[debug] [2026-01-17T06:11:41.787Z] Checked if tokens are valid: false, expires at: 1768385959867
+[debug] [2026-01-17T06:11:41.788Z] > refreshing access token with scopes: []
+[debug] [2026-01-17T06:11:41.792Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-01-17T06:11:41.792Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-17T06:11:41.845Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:41.846Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:41.847Z] Checked if tokens are valid: false, expires at: 1768385959867
+[debug] [2026-01-17T06:11:41.847Z] Checked if tokens are valid: false, expires at: 1768385959867
+[debug] [2026-01-17T06:11:41.847Z] > refreshing access token with scopes: []
+[debug] [2026-01-17T06:11:41.848Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-01-17T06:11:41.848Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-17T06:11:41.899Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-01-17T06:11:41.899Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-17T06:11:41.919Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:11:41.929Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-01-17T06:11:41.933Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-17T06:11:41.947Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:11:42.193Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:42.194Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-17T06:11:42.213Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.213Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.214Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.215Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.237Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.238Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.238Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.238Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.239Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.239Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.242Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.242Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.245Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.246Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.248Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com [none]
+[debug] [2026-01-17T06:11:42.249Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.378Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:42.378Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-17T06:11:42.381Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.381Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.381Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.381Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.398Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.398Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.398Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.398Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:42.399Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.399Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.402Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.402Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.405Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-01-17T06:11:42.405Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:42.408Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com [none]
+[debug] [2026-01-17T06:11:42.409Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com x-goog-quota-user=projects/the-fortune-pwa
+[debug] [2026-01-17T06:11:43.278Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com 403
+[debug] [2026-01-17T06:11:43.280Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com [omitted]
+[debug] [2026-01-17T06:11:43.301Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-01-17T06:11:43.301Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-01-17T06:11:43.323Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-17T06:11:43.323Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-01-17T06:11:43.338Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-17T06:11:43.339Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:43.349Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:43.349Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:43.350Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.350Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.350Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:11:43.408Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com 403
+[debug] [2026-01-17T06:11:43.408Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseio.com [omitted]
+[debug] [2026-01-17T06:11:43.443Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-01-17T06:11:43.443Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-01-17T06:11:43.446Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-17T06:11:43.446Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-17T06:11:43.450Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-17T06:11:43.450Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/the-fortune-pwa/services/cloudfunctions.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:43.786Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:43.786Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:43.787Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.787Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.789Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:43.796Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:43.796Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:43.796Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.797Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:43.797Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:11:44.054Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:44.056Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.069Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.069Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:44.214Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:44.220Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.246Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:44.400Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:44.404Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.406Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.407Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.428Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.429Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:44.429Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:44.429Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:44.429Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.438Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.438Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:44.438Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:44.438Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:11:44.438Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:11:44.651Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:44.652Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.654Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.654Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:11:44.834Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:11:44.835Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:11:44.837Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:11:44.837Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:13:22.742Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:13:22.743Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:13:22.748Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:22.748Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:22.749Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:13:23.850Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:13:23.850Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T06:13:23.857Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T06:13:23.857Z] > authorizing via signed-in user (rainbowinter@naver.com)
+[debug] [2026-01-17T06:13:23.857Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:23.857Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:23.861Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo [none]
+[debug] [2026-01-17T06:13:24.250Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo 200
+[debug] [2026-01-17T06:13:24.250Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/the-fortune-pwa/billingInfo {"name":"projects/the-fortune-pwa/billingInfo","projectId":"the-fortune-pwa","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-17T06:13:24.255Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:24.256Z] Checked if tokens are valid: true, expires at: 1768633900933
+[debug] [2026-01-17T06:13:24.256Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/the-fortune-pwa [none]
+[debug] [2026-01-17T06:13:25.045Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/the-fortune-pwa 200
+[debug] [2026-01-17T06:13:25.045Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/the-fortune-pwa {"projectNumber":"736715560458","projectId":"the-fortune-pwa","lifecycleState":"ACTIVE","name":"the-fortune-pwa","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-01-12T14:49:49.358980Z"}
